@@ -8,10 +8,15 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/bootstrap-responsive.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div class="container">
+            <h1>Hello World!</h1>
+            <p> This is the fist paragraph</p>
+        </div>
     </body>
 </html>
