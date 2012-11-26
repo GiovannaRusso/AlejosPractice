@@ -13,10 +13,10 @@ import java.util.ArrayList;
  */
 public class SQL {
 
-    Connection cnx; //Objeto que ejecuta la conexion con la BD
-    String url = "jdbc:mysql://localhost:3306/superPc";   //Ruta de la BD
-    String usr = "root";      //Usuario
-    String pass = "1234";          //Contraseñ±a de acceso a la BD
+    Connection cnx;                                         //Objeto que ejecuta la conexion con la BD
+    String url = "jdbc:mysql://localhost:3306/clientes";    //Ruta de la BD
+    String usr = "alejos";                                  //Usuario
+    String pass = "2012";                                   //Contraseñ±a de acceso a la BD
 
     public SQL() {
         try {
@@ -35,7 +35,7 @@ public class SQL {
         Statement buscar;   //Objeto que realiza una consulta sql
         ResultSet resultado = null;//Objeto con el resultado de la consulta sql
         try {
-            buscar = cnx.createStatement(resultado.TYPE_SCROLL_SENSITIVE, resultado.CONCUR_READ_ONLY);
+            buscar = cnx.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             resultado = buscar.executeQuery(sql);
         } catch (SQLException e2) {
             System.out.print("Error 2: Problema con la Base de Datos! " + e2.toString());
@@ -55,4 +55,9 @@ public class SQL {
             System.out.print("Error 2: Problema con la Base de Datos! " + e2.toString());
         }
     }
+    
+    public ResultSet getClientes() {
+        return this.consulta("SELECT * FROM clientes");
+    }
+    
 }

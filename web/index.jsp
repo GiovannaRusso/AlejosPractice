@@ -3,7 +3,12 @@
     Created on : 26/11/2012, 01:41:11 AM
     Author     : gio
 --%>
-
+<%@page import="java.sql.ResultSet"%>
+<%@page import = "data.SQL" %>
+<%
+    SQL mySql = new SQL();
+    ResultSet myResult = mySql.getClientes();
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
