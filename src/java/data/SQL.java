@@ -2,6 +2,7 @@ package data;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -43,16 +44,23 @@ public class SQL {
         return resultado;
     }
 
-    public void ModificarSQL(String sql) {
+    public int ModificarSQL(int idCliente, String nombre, String apellido, String estadoCivil, String rif) {
+        PreparedStatement ps = null;
+        int resultado = 0;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e1) {
-            System.out.print("Error 1: Problema con el Driver de conexion!");
-        }
-        try {
-            cnx = DriverManager.getConnection(url, usr, pass);  //Conexion con la BD
+            
+            ps = cnx.prepareStatement("UPDATE clientes SET nombre = ?, apellido = ?, estadoCivil = ?,  rif = ? WHERE idCliente = ?");
+            ps.setString(1, nombre);
+            ps.setString(2, apellido);
+            ps.setString(3, estadoCivil);
+            ps.setString(4, rif);
+            ps.setInt(5, idCliente);
+            
+            return ps.executeUpdate();
+                
         } catch (SQLException e2) {
             System.out.print("Error 2: Problema con la Base de Datos! " + e2.toString());
+            return resultado;
         }
     }
     
